@@ -1,0 +1,15 @@
+.spaces-resize-handle.resize-left:before {
+	cursor: col-resize !important;
+}
+
+.spaces-resize-handle.resize-right:before {
+	cursor: col-resize !important;
+}
+
+.spaces-resize-handle.resize-top:before {
+	cursor: row-resize !important;
+}
+
+.spaces-resize-handle.resize-bottom:before {
+	cursor: row-resize !important;
+}
