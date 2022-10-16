@@ -5,9 +5,10 @@ import LayoutPlayground from './components/LayoutPlayground';
 import ReactVirtualPlayground from './components/ReactVirtualPlayground';
 import RouterPlayground from './components/RouterPlayground';
 import ToasterPlayground from './components/ToasterPlayground';
+import TerminalPlayground from './components/TerminalPlayground';
 
 function render() {
-  ReactDOM.render(<ToasterPlayground />, document.body);
+  ReactDOM.render(<TerminalPlayground />, document.body);
 }
 
 render();

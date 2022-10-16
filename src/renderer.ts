@@ -29,5 +29,3 @@
 import './index.css';
 import './custom.scss';
 import './app';
-
-

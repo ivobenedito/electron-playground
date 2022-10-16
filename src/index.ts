@@ -1,4 +1,7 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, ipcMain } from 'electron';
+import os from 'os';
+// import pty from 'node-pty';
+
 declare const MAIN_WINDOW_WEBPACK_ENTRY: any;
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -6,12 +9,58 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
   app.quit();
 }
 
+ipcMain.on('async-message', (event, arg) => {
+  console.log(arg);
+  event.reply('async-reply', 'pong');
+});
+
+ipcMain.on('sync-message', (event, arg) => {
+  console.log(arg);
+  event.returnValue = 'pong';
+});
+
+/* ######### */
+
+let shell = os.platform() === 'win32' ? 'powershell.exe' : 'bash';
+
+console.log('NEW DATA BELOW:');
+console.log(os.platform());
+console.log(shell);
+
+let pty;
+try {
+  pty = require('node-pty');
+} catch (outerError) {
+  console.error('outerError', outerError);
+}
+
+// let ptyProcess = pty.spawn(shell, [], {
+//   name: 'xterm-color',
+//   cols: 80,
+//   rows: 30,
+//   cwd: process.env.HOME,
+//   env: process.env
+// });
+
+// ptyProcess.on('data', function(data) {
+//   process.stdout.write(data);
+// });
+
+// ptyProcess.write('ls\r');
+// ptyProcess.resize(100, 40);
+// ptyProcess.write('ls\r');
+
+/* ######### */
+
 const createWindow = (): void => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     height: 800,
     width: 1000,
     // frame: false,
+    webPreferences: {
+      nodeIntegration: true,
+    }
   });
 
   // and load the index.html of the app.

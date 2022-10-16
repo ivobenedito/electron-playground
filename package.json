@@ -9,7 +9,8 @@
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
-    "lint": "eslint --ext .ts ."
+    "lint": "eslint --ext .ts .",
+    "rebuild": "electron-rebuild -f -w node-pty"
   },
   "keywords": [],
   "author": {
@@ -89,8 +90,10 @@
   "dependencies": {
     "@types/react-router-dom": "^5.1.7",
     "bootstrap": "^4.6.0",
+    "electron-rebuild": "^2.3.5",
     "electron-squirrel-startup": "^1.0.0",
     "eslint-import-resolver-typescript": "^2.3.0",
+    "node-pty": "^0.11.0-beta8",
     "react": "^17.0.1",
     "react-bootstrap": "^1.5.0",
     "react-dom": "^17.0.1",
